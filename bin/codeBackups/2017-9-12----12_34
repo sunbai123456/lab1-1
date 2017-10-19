@@ -1,0 +1,139 @@
+package test_for_every_dont_know;
+//通过调用自身循环创建新节点失败，当子结点连接至根结点时发生死循环
+public class linkList {
+	public Node first;
+	public linkList() {
+		this.first=null;
+	}
+	public int findindex(String strlst[],String str)//寻找字符串数组strlst中str的索引
+	{
+		int i;
+		for(i=0;i<strlst.length;i++)
+		{
+			if(strlst[i].equals(str))
+			{
+				break;
+			}
+		}
+		return i;
+	}
+	public int Strlength(String strlst[])//字符串数组(已填充长度+1)
+	{
+		int i;
+		for(i=0;i<strlst.length;i++)
+		{
+			if(strlst[i].equals(""))
+			{
+				break;
+			}
+		}
+		return i;
+	}
+	public void findwords(String str) {
+		for(int i=0;i<first.number;i++)
+		{
+			;
+		}
+	}
+	
+	public Node insertWords(String str1,String str2,Node Thefirst) {//插入元素
+		if(str1.equals(" "))
+		{
+			Node newnode=new Node(str2);
+			Thefirst=newnode;
+			return Thefirst;
+		}
+		else {
+			Node p=Thefirst,q=null;
+			int findnum=0;
+			boolean flagThefirst=true;
+			do {
+				if(p.data.equals(str2))//匹配到连接对象
+				{
+					q=p;
+				}
+				if(p.data.equals(str1)) {//匹配到父字符串
+					boolean linkflag=false;
+					for(int i=0;i<p.number+1;i++)
+					{
+						if(p.next[i]!=null&&p.next[i].data.equals(str2))//匹配子字符串是否已存在
+						{
+							p.next[i].weightnum[findindex(p.next[i].weightp,str2)]++;//已存在则权重++
+							return Thefirst;
+						}
+						else {					//不存在则连接新指针flag=true
+							linkflag=true;
+
+						}
+					}
+					if(linkflag)
+					{
+						if(q!=null) {//若连接对象存在，将连接对象连上
+							q.weightp[Strlength(q.weightp)]=str1;
+							q.weightnum[findindex(q.weightp,str1)]++;
+							p.next[p.number]=q;
+							p.number++;
+							return Thefirst;
+						}else {		//若连接对象不存在，则新建指针加入
+							Node newnode=new Node(str2);
+							newnode.weightp[Strlength(p.weightp)]=str1;
+							newnode.weightnum[findindex(newnode.weightp,str1)]++;
+							p.next[p.number]=newnode;
+							p.number++;
+							return Thefirst;
+						}
+					}
+					
+				}
+				else {//未匹配到父字符串
+					if(flagThefirst==true)//进入下一个单链进行匹配
+					{
+						p=p.next[findnum];
+						findnum++;
+						flagThefirst=false;
+						if(p.number>1)
+						{
+							insertWords(str1,str2,p);
+						}
+					}
+					else {
+						p=p.next[0];//进入单链
+						if(p.number>1&&p!=Thefirst)
+						{
+							insertWords(str1,str2,p);//调用自身对多链进行匹配
+						}
+						else if(p==Thefirst){
+							p=p.next[findnum];
+						}
+					}
+					if(p==null&&flagThefirst==false) 
+					{
+						if(findnum+1>Thefirst.number) //对最后一个单链表未找到匹配str1时插入新的
+						{
+							if(q!=null) {
+								q.weightp[Strlength(q.weightp)]=str1;
+								q.weightnum[findindex(q.weightp,str1)]++;
+								p.next[p.number]=q;
+								p.number++;
+								return Thefirst;
+							}else {
+								Node newnode=new Node(str2);
+								newnode.weightp[Strlength(p.weightp)]=str1;
+								newnode.weightnum[findindex(newnode.weightp,str1)]++;
+								p.next[p.number]=newnode;
+								p.number++;
+								return Thefirst;
+							}
+						}else {							//进入下一个单链进行匹配
+							p=Thefirst.next[findnum];
+							findnum++;
+						}
+					}
+					
+				}
+			}while(true);
+			
+		}
+	}//insertWords
+	
+}//linkList
