@@ -21,7 +21,7 @@ public class GraphViz {
 * The dir. where temporary files will be created.
 */
 //private static String tEMPDIR = "/tmp"; // Linux
-private static String tEMPDIR = "d:/temp"; // Windows
+private static String tEMPDIR = "c:/temp"; // Windows
 
 /**
 * Where is your dot program located? It will be called externally.
@@ -110,16 +110,16 @@ public byte[] getGraph(final String dotsource, final String type) {
  }
 }
 
-/**
-* Writes the graph's image in a file.
-* @param img   A byte array containing the image of the graph.
-* @param file  Name of the file to where we want to write.
-* @return Success: 1, Failure: -1
-*/
-public int writeGraphToFile(final byte[] img, final String file) {
- File tofile = new File(file);
- return writeGraphToFile(img, tofile);
-}
+///**
+//* Writes the graph's image in a file.
+//* @param img   A byte array containing the image of the graph.
+//* @param file  Name of the file to where we want to write.
+//* @return Success: 1, Failure: -1
+//*/
+//public int writeGraphToFile(final byte[] img, final String file) {
+// File tofile = new File(file);
+// return writeGraphToFile(img, tofile);
+//}
 
 /**
 * Writes the graph's image in a file.

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 /**.
 * javadoc
 */
@@ -25,6 +26,10 @@ public static linkList creatlnklst(final String[] strlst) {
 * @param args args
 */
 public static void main(final String[] args) {
+	Scanner in = new Scanner(System.in);
+	in.next();
+	int count = 0;
+	while(count++ < 50){
 		    String regex = "[^\\p{Alpha}]+";
 		 String localAddress = "test2.txt";
 		 //String wordstmp;
@@ -88,5 +93,6 @@ public static void main(final String[] args) {
 		//p.start();
 		//p.start2();
 		}
+	}
 	}
 }

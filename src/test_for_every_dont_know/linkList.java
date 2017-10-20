@@ -1,6 +1,7 @@
 package test_for_every_dont_know;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class linkList {
 	protected Node[] nodelst;
@@ -151,7 +152,7 @@ public class linkList {
 		}
 		else
 		{
-			Node p,q;
+			Node p;
 			//Node visitlst[]=new Node[Node.nodeLength];
 			int top=0;
 			visitlst[0]=nodelst[indexOfNodeInlst(str1)];
@@ -200,7 +201,6 @@ public class linkList {
 	}//searchroad
 	public void displaytree()//功能2 展示图
 	{
-		Node tmp;
 		String type = "jpg";
 		GraphViz gv = new GraphViz();
 	    gv.addln(gv.startgraph());
@@ -215,7 +215,7 @@ public class linkList {
 	    	}
 	    }
 	    gv.addln(gv.endgraph());
-	    File out = new File("D:\\java project\\test_for_every_dont_know\\out." + type);    // Windows
+	    File out = new File("F:\\EclipseWorkspace\\test_for_every_dont_know\\out." + type);    // Windows
 	    //System.out.println(gv.getDotSource());
 	    byte[] temp=gv.getGraph( gv.getDotSource(), type );
 	    //System.out.println(temp);
@@ -225,10 +225,11 @@ public class linkList {
 	{
 		int visitnodenum=2*Node.getNodeLength(),top = 0,findin1,findin2;
 		Node visitlst[]=new Node[visitnodenum];
-		for(int i=0;i<visitnodenum;i++)
-		{
-			visitlst[i]=null;
-		}
+		Arrays.fill(visitlst,null);
+//		for(int i=0;i<visitnodenum;i++)
+//		{
+//			visitlst[i]=null;
+//		}
 		findin1=indexOfNodeInlst(str1);
 		findin2=indexOfNodeInlst(str2);
 		if(findin1==-1&&findin2==-1)
@@ -282,18 +283,20 @@ public class linkList {
 		String regex="[^\\p{Alpha}]+";
 		String[] strspilt=strinput.split(regex);
 		String[] strout=new String[(int)(10*strspilt.length)];
-		for(int i=0;i<strout.length;i++){
-			strout[i]="";
-		}
+		Arrays.fill(strout,"");
+//		for(int i=0;i<strout.length;i++){
+//			strout[i]="";
+//		}
 		String[] strtmp=new String[Node.getNodeLength()];
-		for(int i=0;i<strtmp.length;i++){
-			strtmp[i]="";
-		}
+		Arrays.fill(strtmp,"");
+//		for(int i=0;i<strtmp.length;i++){
+//			strtmp[i]="";
+//		}
 		Node[] strnodetmp=new Node[Node.getNodeLength()];
-		for(int i=0;i<strnodetmp.length;i++)
-		{
-			strnodetmp[i]=null;
-		}
+//		for(int i=0;i<strnodetmp.length;i++)
+//		{
+//			strnodetmp[i]=null;
+//		}
 		strout[0]=strspilt[0];
 		int nodetmplength;
 		for(int i=0;i<strspilt.length-1;i++)
